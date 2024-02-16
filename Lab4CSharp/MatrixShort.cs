@@ -406,6 +406,136 @@ public class MatrixShort
         return result;
     }
 
+    public static MatrixShort operator |(MatrixShort matrix1, MatrixShort matrix2)
+{
+    if (matrix1.GetLength(0) != matrix2.GetLength(0) || matrix1.GetLength(1) != matrix2.GetLength(1))
+        throw new ArgumentException("Matrix dimensions must be the same for bitwise OR operation.");
+
+    MatrixShort result = new MatrixShort(matrix1.GetLength(0), matrix1.GetLength(1));
+
+    for (int i = 0; i < matrix1.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix1.GetLength(1); j++)
+        {
+            result[i, j] = (ushort)(matrix1[i, j] | matrix2[i, j]);
+        }
+    }
+
+    return result;
+}
+
+public static MatrixShort operator |(MatrixShort matrix, ushort scalar)
+{
+    MatrixShort result = new MatrixShort(matrix.GetLength(0), matrix.GetLength(1));
+
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            result[i, j] = (ushort)(matrix[i, j] | scalar);
+        }
+    }
+
+    return result;
+}
+
+public static MatrixShort operator ^(MatrixShort matrix1, MatrixShort matrix2)
+{
+    if (matrix1.GetLength(0) != matrix2.GetLength(0) || matrix1.GetLength(1) != matrix2.GetLength(1))
+        throw new ArgumentException("Matrix dimensions must be the same for bitwise XOR operation.");
+
+    MatrixShort result = new MatrixShort(matrix1.GetLength(0), matrix1.GetLength(1));
+
+    for (int i = 0; i < matrix1.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix1.GetLength(1); j++)
+        {
+            result[i, j] = (ushort)(matrix1[i, j] ^ matrix2[i, j]);
+        }
+    }
+
+    return result;
+}
+
+public static MatrixShort operator ^(MatrixShort matrix, ushort scalar)
+{
+    MatrixShort result = new MatrixShort(matrix.GetLength(0), matrix.GetLength(1));
+
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            result[i, j] = (ushort)(matrix[i, j] ^ scalar);
+        }
+    }
+
+    return result;
+}
+
+public static bool operator ==(MatrixShort matrix1, MatrixShort matrix2)
+{
+    if (ReferenceEquals(matrix1, matrix2)) // Check if both matrices reference the same object
+        return true;
+
+    if (matrix1 is null || matrix2 is null) // Check if either matrix is null
+        return false;
+
+    if (matrix1.GetLength(0) != matrix2.GetLength(0) || matrix1.GetLength(1) != matrix2.GetLength(1))
+        return false; // Matrices must have the same dimensions for equality
+
+    for (int i = 0; i < matrix1.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix1.GetLength(1); j++)
+        {
+            if (matrix1[i, j] != matrix2[i, j])
+                return false; // If any element is different, matrices are not equal
+        }
+    }
+
+    return true; // If all elements are equal, matrices are equal
+}
+
+public static bool operator !=(MatrixShort matrix1, MatrixShort matrix2)
+{
+    return !(matrix1 == matrix2); // Return the negation of the equality operator
+}
+
+public static bool operator >(MatrixShort matrix1, MatrixShort matrix2)
+{
+    if (matrix1 is null || matrix2 is null)
+        throw new ArgumentNullException(); // Handle null matrices
+
+    if (matrix1.GetLength(0) != matrix2.GetLength(0) || matrix1.GetLength(1) != matrix2.GetLength(1))
+        throw new ArgumentException("Matrix dimensions must be the same for comparison.");
+
+    for (int i = 0; i < matrix1.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix1.GetLength(1); j++)
+        {
+            if (matrix1[i, j] <= matrix2[i, j])
+                return false; // If any element in matrix1 is not greater than the corresponding element in matrix2, return false
+        }
+    }
+
+    return true; // All elements in matrix1 are greater than the corresponding elements in matrix2
+}
+
+public static bool operator >=(MatrixShort matrix1, MatrixShort matrix2)
+{
+    return matrix1 == matrix2 || matrix1 > matrix2; // Return true if matrices are equal or matrix1 is greater than matrix2
+}
+
+public static bool operator <(MatrixShort matrix1, MatrixShort matrix2)
+{
+    return !(matrix1 >= matrix2); // Return true if matrix1 is not greater than or equal to matrix2
+}
+
+public static bool operator <=(MatrixShort matrix1, MatrixShort matrix2)
+{
+    return matrix1 == matrix2 || matrix1 < matrix2; // Return true if matrices are equal or matrix1 is less than matrix2
+}
+
+
     
 }
 

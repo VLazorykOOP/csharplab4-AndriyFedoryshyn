@@ -322,4 +322,161 @@ public class MatrixShortTests
         Assert.Equal(1, result[1, 0]);
         Assert.Equal(2, result[1, 1]);
     }
+
+     [Fact]
+    public void EqualityOperator_ReturnsTrueWhenMatricesAreEqual()
+    {
+        // Arrange
+        var matrix1 = new MatrixShort(2, 2);
+        var matrix2 = new MatrixShort(2, 2);
+        matrix1.SetElements(new ushort[,] { { 1, 2 }, { 3, 4 } });
+        matrix2.SetElements(new ushort[,] { { 1, 2 }, { 3, 4 } });
+
+        // Act & Assert
+        Assert.True(matrix1 == matrix2);
+    }
+
+    [Fact]
+    public void EqualityOperator_ReturnsFalseWhenMatricesAreNotEqual()
+    {
+        // Arrange
+        var matrix1 = new MatrixShort(2, 2);
+        var matrix2 = new MatrixShort(2, 2);
+        matrix1.SetElements(new ushort[,] { { 1, 2 }, { 3, 4 } });
+        matrix2.SetElements(new ushort[,] { { 1, 2 }, { 3, 5 } });
+
+        // Act & Assert
+        Assert.False(matrix1 == matrix2);
+    }
+
+    [Fact]
+    public void InequalityOperator_ReturnsTrueWhenMatricesAreNotEqual()
+    {
+        // Arrange
+        var matrix1 = new MatrixShort(2, 2);
+        var matrix2 = new MatrixShort(2, 2);
+        matrix1.SetElements(new ushort[,] { { 1, 2 }, { 3, 4 } });
+        matrix2.SetElements(new ushort[,] { { 1, 2 }, { 3, 5 } });
+
+        // Act & Assert
+        Assert.True(matrix1 != matrix2);
+    }
+
+    [Fact]
+    public void InequalityOperator_ReturnsFalseWhenMatricesAreEqual()
+    {
+        // Arrange
+        var matrix1 = new MatrixShort(2, 2);
+        var matrix2 = new MatrixShort(2, 2);
+        matrix1.SetElements(new ushort[,] { { 1, 2 }, { 3, 4 } });
+        matrix2.SetElements(new ushort[,] { { 1, 2 }, { 3, 4 } });
+
+        // Act & Assert
+        Assert.False(matrix1 != matrix2);
+    }
+
+    //
+     [Fact]
+    public void GreaterThanOperator_ReturnsTrueWhenMatrix1IsGreaterThanMatrix2()
+    {
+        // Arrange
+        var matrix1 = new MatrixShort(2, 2);
+        var matrix2 = new MatrixShort(2, 2);
+        matrix1.SetElements(new ushort[,] { { 2, 3 }, { 4, 5 } });
+        matrix2.SetElements(new ushort[,] { { 1, 2 }, { 3, 4 } });
+
+        // Act & Assert
+        Assert.True(matrix1 > matrix2);
+    }
+
+    [Fact]
+    public void GreaterThanOperator_ReturnsFalseWhenMatrix1IsNotGreaterThanMatrix2()
+    {
+        // Arrange
+        var matrix1 = new MatrixShort(2, 2);
+        var matrix2 = new MatrixShort(2, 2);
+        matrix1.SetElements(new ushort[,] { { 1, 2 }, { 3, 4 } });
+        matrix2.SetElements(new ushort[,] { { 2, 3 }, { 4, 5 } });
+
+        // Act & Assert
+        Assert.False(matrix1 > matrix2);
+    }
+
+    [Fact]
+    public void GreaterThanOrEqualOperator_ReturnsTrueWhenMatrix1IsGreaterThanOrEqualToMatrix2()
+    {
+        // Arrange
+        var matrix1 = new MatrixShort(2, 2);
+        var matrix2 = new MatrixShort(2, 2);
+        matrix1.SetElements(new ushort[,] { { 2, 3 }, { 4, 5 } });
+        matrix2.SetElements(new ushort[,] { { 1, 2 }, { 3, 4 } });
+
+        // Act & Assert
+        Assert.True(matrix1 >= matrix2);
+    }
+
+    [Fact]
+    public void GreaterThanOrEqualOperator_ReturnsFalseWhenMatrix1IsNotGreaterThanOrEqualToMatrix2()
+    {
+        // Arrange
+        var matrix1 = new MatrixShort(2, 2);
+        var matrix2 = new MatrixShort(2, 2);
+        matrix1.SetElements(new ushort[,] { { 1, 2 }, { 3, 4 } });
+        matrix2.SetElements(new ushort[,] { { 2, 3 }, { 4, 5 } });
+
+        // Act & Assert
+        Assert.False(matrix1 >= matrix2);
+    }
+    
+    [Fact]
+    public void LessThanOperator_ReturnsTrueWhenMatrix1IsLessThanMatrix2()
+    {
+        // Arrange
+        var matrix1 = new MatrixShort(2, 2);
+        var matrix2 = new MatrixShort(2, 2);
+        matrix1.SetElements(new ushort[,] { { 1, 2 }, { 3, 4 } });
+        matrix2.SetElements(new ushort[,] { { 2, 3 }, { 4, 5 } });
+
+        // Act & Assert
+        Assert.True(matrix1 < matrix2);
+    }
+
+    [Fact]
+    public void LessThanOperator_ReturnsFalseWhenMatrix1IsNotLessThanMatrix2()
+    {
+        // Arrange
+        var matrix1 = new MatrixShort(2, 2);
+        var matrix2 = new MatrixShort(2, 2);
+        matrix1.SetElements(new ushort[,] { { 2, 3 }, { 4, 5 } });
+        matrix2.SetElements(new ushort[,] { { 1, 2 }, { 3, 4 } });
+
+        // Act & Assert
+        Assert.False(matrix1 < matrix2);
+    }
+
+    [Fact]
+    public void LessThanOrEqualOperator_ReturnsTrueWhenMatrix1IsLessThanOrEqualToMatrix2()
+    {
+        // Arrange
+        var matrix1 = new MatrixShort(2, 2);
+        var matrix2 = new MatrixShort(2, 2);
+        matrix1.SetElements(new ushort[,] { { 1, 2 }, { 3, 4 } });
+        matrix2.SetElements(new ushort[,] { { 2, 3 }, { 4, 5 } });
+
+        // Act & Assert
+        Assert.True(matrix1 <= matrix2);
+    }
+
+    [Fact]
+    public void LessThanOrEqualOperator_ReturnsFalseWhenMatrix1IsNotLessThanOrEqualToMatrix2()
+    {
+        // Arrange
+        var matrix1 = new MatrixShort(2, 2);
+        var matrix2 = new MatrixShort(2, 2);
+        matrix1.SetElements(new ushort[,] { { 2, 3 }, { 4, 5 } });
+        matrix2.SetElements(new ushort[,] { { 1, 2 }, { 3, 4 } });
+
+        // Act & Assert
+        Assert.False(matrix1 <= matrix2);
+    }
 }
