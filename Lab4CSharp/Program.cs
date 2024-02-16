@@ -124,9 +124,49 @@ internal class Program
     }
 
     public static void task3()
-    {
-       
-    }
+        {
+            // Create a MatrixShort object using the constructor with two parameters
+            MatrixShort matrix1 = new MatrixShort(2, 2);
+            matrix1.SetElements(new ushort[,] { { 1, 2 }, { 3, 4 } });
+
+            // Create another MatrixShort object using the constructor with three parameters
+            MatrixShort matrix2 = new MatrixShort(2, 2, 5);
+
+            // Display the elements of matrix1
+            Console.WriteLine("Matrix 1:");
+            matrix1.DisplayElements();
+            Console.WriteLine();
+
+            // Display the elements of matrix2
+            Console.WriteLine("Matrix 2:");
+            matrix2.DisplayElements();
+            Console.WriteLine();
+
+            // Perform some operations
+            // Increment all elements of matrix1
+            matrix1++;
+            Console.WriteLine("After incrementing all elements of matrix1:");
+            matrix1.DisplayElements();
+            Console.WriteLine();
+
+            // Multiply matrix2 by a scalar value
+            MatrixShort multipliedMatrix = matrix2 * 2;
+            Console.WriteLine("After multiplying matrix2 by 2:");
+            multipliedMatrix.DisplayElements();
+            Console.WriteLine();
+
+            // Convert matrix2 to a 2D array
+            ushort[,] array = matrix2.ToArray();
+            Console.WriteLine("Matrix 2 converted to 2D array:");
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    Console.Write(array[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+        }
 
     static void Main(string[] args)
     {
@@ -134,7 +174,7 @@ internal class Program
 
         try
         {
-            Console.WriteLine("Input number of task(1 or 2): ");
+            Console.WriteLine("Input number of task(1,2,3): ");
             int task = Convert.ToInt32(Console.ReadLine());
             switch (task)
             {
@@ -143,6 +183,9 @@ internal class Program
                     break;
                 case 2:
                     task2();
+                    break;
+                case 3:
+                    task3();
                     break;
                 default:
                     Console.WriteLine("Task not found");
